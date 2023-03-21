@@ -1,13 +1,10 @@
 CC:=clang
-OUT:=main
-CFLAGS:=-g -Wall -Wextra -std=c11 -pedantic -lm -fsanitize=address -O2
-RFLAGS:=-std=c11 -lm -DNDEBUG -O2
-CFILES:=$(wildcard src/*.c)
-OBJS:=$(patsubst src/%.c, obj/%.o, $(CFILES))
+CFLAGS:=-g -Wall -Wextra -std=c11 -pedantic -fsanitize=address -O2
+dir:=$(shell mkdir -p obj)
 
 .PHONY: clean
 .PHONY: run
-.PHONY: 
+.PHONY: default
 
 default: primes primes-i steg-decode
 
@@ -16,13 +13,13 @@ run: primes primes-i
 	ulimit -s 30000 ; ./primes-i
 
 primes: obj/primes.o obj/eratosthenes.o obj/error.o
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) -lm $^ -o $@
 
 primes-i: obj/primes-i.o obj/eratosthenes-i.o obj/error.o
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) -lm $^ -o $@
 
-steg-decode: src/steg-decode.o src/ppm.o src/error.o src/eratosthenes.o
-	$(CC) $(CFLAGS) $^ -o $@
+steg-decode: obj/steg-decode.o obj/ppm.o obj/error.o obj/eratosthenes.o
+	$(CC) $(CFLAGS) -lm $^ -o $@
 
 obj/primes.o: src/primes.c src/eratosthenes.h src/bitset.h src/error.h
 obj/eratosthenes.o: src/eratosthenes.c src/eratosthenes.h src/bitset.h src/error.h
