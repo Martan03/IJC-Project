@@ -1,7 +1,7 @@
 // eratosthenes.h
 // Řešení IJC-DU1, příklad a), 14.03.2023
 // Autor: Martin Slezák, FIT
-// Přeloženo: gcc 10.2
+// Přeloženo: clang 14.0.0-1ubuntu1
 // Deklarace funkce Eratosthenes pro nalezení prvočísel
 
 #ifndef ERA_INCLUDED

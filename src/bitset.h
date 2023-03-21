@@ -1,7 +1,7 @@
 // bitset.h
 // Řešení IJC-DU1, příklad a), 14.03.2023
 // Autor: Martin Slezák, FIT
-// Přeloženo: gcc 10.2
+// Přeloženo: clang 14.0.0-1ubuntu1
 // Definování zadaných funkcí a maker pro práci s bitovým polem
 
 #ifndef BITSET_INCLUDED

@@ -1,8 +1,8 @@
 // steg-decode.c
 // Řešení IJC-DU1, příklad b), 14.03.2023
 // Autor: Martin Slezák, FIT
-// Přeloženo: gcc 10.2
-// ...
+// Přeloženo: clang 14.0.0-1ubuntu1
+// Získání tajné zprávy ze souboru PPM
 
 #include <stdio.h>
 #include <stdlib.h>

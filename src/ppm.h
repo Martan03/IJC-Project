@@ -1,8 +1,8 @@
 // ppm.h
 // Řešení IJC-DU1, příklad b), 14.03.2023
 // Autor: Martin Slezák, FIT
-// Přeloženo: gcc 10.2
-// ...
+// Přeloženo: clang 14.0.0-1ubuntu1
+// Definice funkcí pro čtení ze souboru PPM
 
 #ifndef PPM_INCLUDED
 #define PPM_INCLUDED

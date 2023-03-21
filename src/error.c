@@ -1,7 +1,7 @@
 // error.c
 // Řešení IJC-DU1, příklad b), 14.03.2023
 // Autor: Martin Slezák, FIT
-// Přeloženo: gcc 10.2
+// Přeloženo: clang 14.0.0-1ubuntu1
 // Implementace warning a error funkcí
 
 #include <stdlib.h>
