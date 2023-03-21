@@ -84,6 +84,8 @@ static inline _Bool bitset_getbit(bitset_t arr, bitset_index_t index)
     return (arr[index / BITSET_SIZE + 1] & (1L << k));
 }
 
+#ifndef USE_INLINE
+
 /// @brief Frees given array
 /// @param arr array to be freed
 #define bitset_free(arr) free(arr)
@@ -117,4 +119,5 @@ static inline _Bool bitset_getbit(bitset_t arr, bitset_index_t index)
 /// @return value of the bit (true/false)
 #define bitset_getbit(arr, index) bitset_getbit(arr, index)
 
+#endif // USE_INLINE
 #endif // BITSET_INCLUDED

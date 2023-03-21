@@ -34,5 +34,7 @@ void get_primes()
 
     for (bitset_index_t i = k; i < bitset_size(primes); ++i)
         if (!bitset_getbit(primes, i))
-            printf("%d\n", i);
+            printf("%lu\n", i);
+            
+    bitset_free(primes);
 }

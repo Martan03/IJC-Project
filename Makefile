@@ -1,22 +1,40 @@
 CC:=clang
 OUT:=main
-CFLAGS:=-g -Wall -std=c17 -lm -fsanitize=address
+CFLAGS:=-g -Wall -Wextra -std=c11 -pedantic -lm -fsanitize=address -O2
 RFLAGS:=-std=c11 -lm -DNDEBUG -O2
 CFILES:=$(wildcard src/*.c)
-HFILES:=$(wildcard src/*.h)
 OBJS:=$(patsubst src/%.c, obj/%.o, $(CFILES))
 
-primes:
-	clang $(CFLAGS) -o primes src/primes.c src/eratosthenes.c src/error.c
+.PHONY: clean
+.PHONY: run
+.PHONY: 
 
-debug: $(OBJS)
-	$(CC) $(CFLAGS) -o bin/debug/$(OUT) $(OBJS)
+default: primes primes-i steg-decode
 
-release: $(CFILES)
-	$(CC) $(RFLAGS) -o bin/release/$(OUT) $(CFILES)
+run: primes primes-i
+	ulimit -s 30000 ; ./primes
+	ulimit -s 30000 ; ./primes-i
 
-$(OBJS): $(CFILES)
-	$(CC) $(CFLAGS) -c $(patsubst obj/%.o, src/%.c, $@) -o $@
+primes: obj/primes.o obj/eratosthenes.o obj/error.o
+	$(CC) $(CFLAGS) $^ -o $@
+
+primes-i: obj/primes-i.o obj/eratosthenes-i.o obj/error.o
+	$(CC) $(CFLAGS) $^ -o $@
+
+steg-decode: src/steg-decode.o src/ppm.o src/error.o src/eratosthenes.o
+	$(CC) $(CFLAGS) $^ -o $@
+
+obj/primes.o: src/primes.c src/eratosthenes.h src/bitset.h src/error.h
+obj/eratosthenes.o: src/eratosthenes.c src/eratosthenes.h src/bitset.h src/error.h
+obj/error.o: src/error.c src/error.h
+obj/steg-decode.o: src/steg-decode.c src/ppm.h src/error.h src/bitset.h src/eratosthenes.h
+obj/ppm.o: src/ppm.c src/ppm.h src/error.h
+
+obj/%-i.o: src/%.c src/eratosthenes.h src/bitset.h src/error.h
+	$(CC) $(CFLAGS) -DUSE_INLINE -c $< -o $@
+
+obj/%.o: src/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm $(OBJS)
+	rm -r obj
