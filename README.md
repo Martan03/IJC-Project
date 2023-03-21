@@ -1,11 +1,7 @@
-IJC: DU1
-
-
 Jazyk C                     DU1                        21.2.2023
 ----------------------------------------------------------------
 
-
-                      Domácí úkol č.1
+> Domácí úkol č.1
 
 
 Termín odevzdání:  21.3.2023
@@ -256,7 +252,4 @@ C) Obecné pokyny pro vypracování domácích úkolů (rev 21.2.2023)
 
 * Opsané úkoly budou hodnoceny 0 bodů pro všechny zůčastněné
   a to bez výjimky (+bonus v podobě návštěvy u disciplinární komise).
-
-
-Poslední modifikace: 20. February 2023
-Pokud naleznete na této stránce chybu, oznamte to dopisem na adresu peringer AT fit.vutbr.cz
+  
